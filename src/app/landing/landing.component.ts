@@ -4,7 +4,13 @@ declare var $: any;
 @Component({
     selector: 'app-landing',
     templateUrl: './landing.component.html',
-    styleUrls: ['./landing.component.scss']
+    styleUrls: [
+        './landing.component.scss',
+        '../../assets/landing/css/bootstrap.css',
+        '../../assets/landing/css/fontawesome-all.css',
+        '../../assets/landing/css/magnific-popup.css',
+        '../../assets/landing/css/styles.css',
+    ]
 })
 
 export class LandingComponent implements OnInit {
