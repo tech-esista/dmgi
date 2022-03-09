@@ -1,0 +1,43 @@
+.action {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .action-item {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+
+        i {
+            font-size: 15px;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background: #f1f1f1;
+        }
+    }
+}
+
+
+.form-card-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    i {
+        font-size: 25px;
+        margin-right: 20px;
+        line-height: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            color: #d3d3d3;
+            font-size: 30px;
+        }
+    }
+}
