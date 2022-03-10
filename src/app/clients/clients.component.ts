@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {EnquiriesService} from "../enquiries/enquiries.service";
 
 @Component({
   selector: 'app-clients',
@@ -7,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private enquiriesService: EnquiriesService) { }
 
   ngOnInit(): void {
-
+    // this.enquiriesService.addEnquiry();
   }
 
 }
