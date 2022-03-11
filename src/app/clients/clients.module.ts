@@ -4,6 +4,8 @@ import {RouterModule} from "@angular/router";
 import {ClientsRoutingModule} from "./clients-routing.module";
 import { ClientsAlterComponent } from './alter/alter.component';
 import {SharedModule} from "../shared/shared.module";
+import {FormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
     declarations: [
@@ -13,7 +15,9 @@ import {SharedModule} from "../shared/shared.module";
     imports: [
         RouterModule,
         ClientsRoutingModule,
-        SharedModule
+        SharedModule,
+        FormsModule,
+        CommonModule
     ],
     exports: []
 })

@@ -8,8 +8,12 @@ const routes: Routes = [
         path: "",
         component: ClientsComponent
     },
-    {
+    /*{
         path: "new",
+        component: ClientsAlterComponent
+    },*/
+    {
+        path: "alter/:id",
         component: ClientsAlterComponent
     }
 ]
