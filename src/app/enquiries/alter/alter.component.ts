@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import * as iziToast from "izitoast";
 import {ActivatedRoute, Router} from "@angular/router";
+import Swal from 'sweetalert2'
 
 import {EnquiriesService} from "../enquiries.service";
 
@@ -59,6 +60,31 @@ export class EnquiriesAlterComponent implements OnInit {
                     position: 'topRight'
                 });
             this.router.navigate(["/", "enquiries"])
+        })
+    }
+
+    convertToClient() {
+        // @ts-ignore
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'By confirming, this enquiry will be converted into client?',
+            icon: 'success',
+            confirmButtonText: "Make it Client",
+            cancelButtonText: "Cancel",
+            showCancelButton: true,
+            showLoaderOnConfirm: true,
+            buttons: true,
+            preConfirm: () => {
+                this.enquiriesService.convertToClient(this.enquiryId).subscribe((data) => {
+                    iziToast.default.success({
+                        title: 'Success',
+                        message: `Successfully converted into client!`,
+                        position: 'topRight'
+                    })
+                    this.router.navigateByUrl("/clients");
+                })
+            },
+            dangerMode: true,
         })
     }
 }
