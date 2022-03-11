@@ -2,8 +2,8 @@
     <app-navigation></app-navigation>
     <!--todo refactor for this  <router-outlet></router-outlet>-->
     <div class="main-content">
-        <!--<app-loader></app-loader>-->
-        <div class="section">
+        <app-loader *ngIf="loader"></app-loader>
+        <div class="section" *ngIf="!loader">
             <div class="section-body">
                 <div class="row">
                     <div class="col-12">
@@ -21,12 +21,14 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    <tr *ngFor="let enquiry of enquiries">
                                         <th scope="row"></th>
-                                        <td class="ng-binding">John Smith</td>
-                                        <td class="ng-binding">john@gmail.com</td>
-                                        <td class="ng-binding">9283748329</td>
-                                        <td class="ng-binding">Esista</td>
+                                        <td class="ng-binding">{{ enquiry.name }}</td>
+                                        <td class="ng-binding">{{ enquiry.email }}</td>
+                                        <td class="ng-binding">{{ enquiry.mobile_no }}</td>
+                                        <td class="ng-binding">
+                                            <app-status-tag statusId="{{enquiry.status_id}}"></app-status-tag>
+                                        </td>
                                         <td class="action">
                                             <div class="action-item" routerLink="new">
                                                 <i class="fas fa-pen"></i>
@@ -41,6 +43,8 @@
                 </div>
             </div>
         </div>
+        <div class="add-btn" routerLink="new">
+            <span class="add-icon"></span>
+        </div>
     </div>
-
 </div>
