@@ -5,6 +5,7 @@ import {EnquiriesRoutingModule} from "./enquiries-routing.module";
 import {SharedModule} from "../shared/shared.module";
 import { EnquiriesAlterComponent } from './alter/alter.component';
 import {CommonModule} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import {CommonModule} from "@angular/common";
         RouterModule,
         EnquiriesRoutingModule,
         SharedModule,
-        CommonModule
+        CommonModule,
+        FormsModule
     ]
 })
 export class EnquiriesModule {

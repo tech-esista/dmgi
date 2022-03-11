@@ -7,8 +7,13 @@ const routes: Routes = [
     {
         path: "",
         component: EnquiriesComponent
-    }, {
+    },
+    {
         path: "new",
+        component: EnquiriesAlterComponent
+    },
+    {
+        path: "alter/:id",
         component: EnquiriesAlterComponent
     }
 ]

@@ -1,4 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {NgForm} from "@angular/forms";
+import * as iziToast from "izitoast";
+import {ActivatedRoute, Router} from "@angular/router";
+
+import {EnquiriesService} from "../enquiries.service";
 
 @Component({
     selector: 'app-alter',
@@ -6,11 +11,54 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./alter.component.scss', '../../shared/shared.stylesheet.scss']
 })
 export class EnquiriesAlterComponent implements OnInit {
+    @ViewChild('form') enquiryForm: NgForm;
+    enquiryId: number;
+    pageLoader: boolean = false;
+    btnLoader: boolean = false;
 
-    constructor() {
+    constructor(private enquiriesService: EnquiriesService,
+                private router: Router, private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
+        this.route.params.subscribe((params: any) => {
+            if (params.hasOwnProperty("id")) {
+                this.pageLoader = true;
+                this.enquiriesService.retrieveEnquiry(params.id).subscribe((data: any) => {
+                    this.pageLoader = false;
+                    this.enquiryId = data.id;
+                    delete data.id;
+                    delete data.created_at;
+                    delete data.updated_at;
+                    this.enquiryForm.setValue(data)
+                })
+            }
+        })
     }
 
+    alterEnquiry(form: NgForm) {
+        if (form.form.status === 'INVALID') {
+            return
+        }
+
+        this.btnLoader = true;
+        let params = form.value;
+        if (this.enquiryId) {
+            params = {
+                id: this.enquiryId,
+                ...form.value
+            }
+        }
+
+        this.enquiriesService.addNewEnquiry(params).subscribe(data => {
+            this.btnLoader = false;
+            iziToast.default
+                .success({
+                    title: 'Success',
+                    message: `${this.enquiryId ? 'Updated' : 'Added new'} enquiry entry`,
+                    position: 'topRight'
+                });
+            this.router.navigate(["/", "enquiries"])
+        })
+    }
 }

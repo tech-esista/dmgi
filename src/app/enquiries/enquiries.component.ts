@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EnquiriesService} from "./enquiries.service";
+import * as iziToast from "izitoast"
 
 @Component({
     selector: 'app-enquiries',
@@ -14,13 +15,8 @@ export class EnquiriesComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.enquiriesService.retrieveEnquries().subscribe((data: any) => {
-            this.enquiries.push({
-                name: "Kunj",
-                email: "Tesxt@gmail.com",
-                mobile_no: "741258963",
-                status_id: 2
-            });
+        this.enquiriesService.retrieveEnquiries().subscribe((data: any) => {
+            this.enquiries = data;
             this.loader = false
         })
     }

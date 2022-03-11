@@ -62,3 +62,18 @@
         background: url(../../assets/otika/images/add-icon.svg) no-repeat center center;
     }
 }
+
+.ng-submitted {
+    input.ng-invalid,
+    select.ng-invalid,
+    textarea.ng-invalid {
+        border: 1px solid red
+    }
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+    border: 1px solid red
+}
+
