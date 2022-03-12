@@ -11,32 +11,108 @@
                                 <h4>Client Info</h4>
                             </div>
                             <div class="card-body">
-                                <form name="realtorForm" novalidate>
+                                <form name="clientForm" (ngSubmit)="alterClient(form)" #form="ngForm">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Name</label>
-                                            <input type="text" name="name" autocomplete="off" class="form-control" required>
+                                            <input type="text" ngModel name="name" autocomplete="off" class="form-control" required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Email</label>
-                                            <input type="email" name="email" autocomplete="off" class="form-control" required>
+                                            <input type="email" ngModel name="email" autocomplete="off" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Mobile</label>
-                                            <input type="number" name="mobile" maxlength="10" oninput="this.value=this.value.slice(0,this.maxLength)" autocomplete="off" class="form-control" required>
+                                            <input type="number" ngModel name="mobile_no" maxlength="10" oninput="this.value=this.value.slice(0,this.maxLength)" autocomplete="off" class="form-control" required>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Company Name</label>
-                                            <input type="text" name="company" autocomplete="off" class="form-control" required>
+                                            <label>Age</label>
+                                            <input type="number" ngModel name="age" autocomplete="off" class="form-control" required>
                                         </div>
                                     </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Interested In</label>
+                                            <select class="form-control" ngModel name="interested_in" required>
+                                                <option value="">Select</option>
+                                                <option [ngValue]="type.id" *ngFor="let type of constants.INTERESTED_IN">{{ type.text }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Gender</label>
+                                            <select class="form-control" ngModel name="gender" required>
+                                                <option value="">Select</option>
+                                                <option [ngValue]="gender.id" *ngFor="let gender of constants.GENDER">{{ gender.text }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>No of Applicants</label>
+                                            <input type="number" ngModel name="no_of_applicants" autocomplete="off" class="form-control" required>
+                                        </div>
+                                        <div class="form-check" style="margin: 37px 10px">
+                                            <input class="form-check-input" ngModel type="checkbox" id="isFamilyCheck" name="is_family">
+                                            <label class="form-check-label" for="isFamilyCheck"> Is Family </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Education</label>
+                                            <input type="text" ngModel name="education" autocomplete="off" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Profession</label>
+                                            <input type="text" ngModel name="profession" autocomplete="off" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>City</label>
+                                            <input type="text" ngModel name="city" autocomplete="off" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Pincode</label>
+                                            <input type="text" ngModel name="pincode" autocomplete="off" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Address</label>
+                                            <textarea name="address" ngModel autocomplete="off" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Extra Details</label>
+                                            <textarea name="extra_details" ngModel autocomplete="off" class="form-control" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Status</label>
+                                            <select class="form-control" ngModel name="status_id" required>
+                                                <option value="">Select</option>
+                                                <option [ngValue]="status.id" *ngFor="let status of constants.STATUSES">{{ status.text }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Referral</label>
+                                            <input type="text" ngModel name="referral" autocomplete="off" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Amount</label>
+                                            <input type="number" ngModel name="amount" autocomplete="off" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-6">&nbsp;</div>
+                                    </div>
+                                    <div class="card-footer text-right">
+                                        <button class="btn btn-primary mr-2" [ngClass]="{'btn-progress': btnLoader}" type="submit">Submit</button>
+                                        <button class="btn btn-secondary mr-2" type="reset">Reset</button>
+                                    </div>
                                 </form>
-                            </div>
-                            <div class="card-footer text-right">
-                                <button class="btn btn-primary mr-1" type="submit">Submit</button>
-                                <button class="btn btn-secondary" type="reset">Reset</button>
                             </div>
                         </div>
                     </div>

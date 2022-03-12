@@ -31,7 +31,7 @@ export class ClientsService {
             )
     }
 
-    updaterClient(clientData: any) {
+    updateClient(clientData: any) {
         return this.http.post(`${environment.API_HOST}/enquiry/update_csc_client`, clientData)
             .pipe(
                 map((httpResponse: any) => {

@@ -35,14 +35,13 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Interested In</label>
-                                            <input type="text" ngModel name="interested_in" autocomplete="off" class="form-control" required>
+                                            <option [ngValue]="type.id" *ngFor="let type of constants.INTERESTED_IN">{{ type.text }}</option>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Gender</label>
                                             <select class="form-control" ngModel name="gender" required>
                                                 <option value="">Select</option>
-                                                <option value="1">Male</option>
-                                                <option value="2">Female</option>
+                                                <option [ngValue]="gender.id" *ngFor="let gender of constants.GENDER">{{ gender.text }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -91,8 +90,7 @@
                                             <label>Status</label>
                                             <select class="form-control" ngModel name="status_id" required>
                                                 <option value="">Select</option>
-                                                <option value="1">Active</option>
-                                                <option value="2">Inactive</option>
+                                                <option [ngValue]="status.id" *ngFor="let status of constants.STATUSES">{{ status.text }}</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">

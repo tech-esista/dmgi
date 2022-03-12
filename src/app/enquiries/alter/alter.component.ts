@@ -4,6 +4,7 @@ import * as iziToast from "izitoast";
 import {ActivatedRoute, Router} from "@angular/router";
 import Swal from 'sweetalert2'
 
+import constants from "../../shared/constants"
 import {EnquiriesService} from "../enquiries.service";
 
 @Component({
@@ -16,6 +17,7 @@ export class EnquiriesAlterComponent implements OnInit {
     enquiryId: number;
     pageLoader: boolean = false;
     btnLoader: boolean = false;
+    constants = constants;
 
     constructor(private enquiriesService: EnquiriesService,
                 private router: Router, private route: ActivatedRoute) {
