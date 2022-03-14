@@ -4,12 +4,14 @@ import {RouterModule} from "@angular/router";
 import {LoaderComponent} from './loader/loader.component';
 import {StatusTagComponent} from './status-tag/status-tag.component';
 import {FormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
     declarations: [NavigationComponent, LoaderComponent, StatusTagComponent],
     imports: [
         RouterModule,
-        FormsModule
+        FormsModule,
+        CommonModule
     ],
     exports: [NavigationComponent, LoaderComponent, StatusTagComponent]
 })

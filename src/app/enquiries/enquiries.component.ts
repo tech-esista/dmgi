@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {EnquiriesService} from "./enquiries.service";
-import * as iziToast from "izitoast"
 
 @Component({
     selector: 'app-enquiries',
