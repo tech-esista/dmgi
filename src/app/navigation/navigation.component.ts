@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../login/auth.service";
 import Swal from "sweetalert2";
+import {User} from "../models/user.model";
 
 @Component({
     selector: 'app-navigation',
@@ -9,7 +10,7 @@ import Swal from "sweetalert2";
     styleUrls: ['./navigation.component.scss', '../shared/shared.stylesheet.scss']
 })
 export class NavigationComponent implements OnInit {
-    isAdmin: boolean = true;
+    user: User;
 
     constructor(private router: Router, private authService: AuthService) {
     }
@@ -17,7 +18,7 @@ export class NavigationComponent implements OnInit {
     ngOnInit(): void {
         this.authService.user$.subscribe(user => {
             if (user) {
-                this.isAdmin = user.isAdmin;
+                this.user = user;
             }
         })
     }

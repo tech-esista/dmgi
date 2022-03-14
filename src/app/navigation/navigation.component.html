@@ -15,12 +15,12 @@
                 <img alt="image" src="/assets/otika/images/user.png" class="user-img-radious-style">
                 <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
-                <div class="dropdown-title">Hello Kunj</div>
-                <a class="dropdown-item has-icon"> <i class="far fa-user"></i> Profile </a>
-                <a class="dropdown-item has-icon"> <i class="fas fa-bolt"></i> Activities </a>
-                <a class="dropdown-item has-icon"> <i class="fas fa-cog"></i> Settings </a>
+                <div class="dropdown-title">Hello {{ user.name }}</div>
+                <a class="dropdown-item has-icon" (click)="navigateTo('/profile')"><i class="far fa-user"></i> Profile </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item has-icon text-danger" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Logout </a>
+                <a class="dropdown-item has-icon text-danger" (click)="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
             </div>
         </li>
     </ul>
@@ -47,7 +47,7 @@
                     </div>
                     <span>Clients</span> </a>
             </li>
-            <li class="dropdown" routerLink="/users" *ngIf="isAdmin" routerLinkActive="active">
+            <li class="dropdown" routerLink="/users" *ngIf="user.isAdmin" routerLinkActive="active">
                 <a class="nav-link" (click)="navigateTo('users')">
                     <div class="icon-preview">
                         <img src="/assets/otika/images/icons/users.png"/>

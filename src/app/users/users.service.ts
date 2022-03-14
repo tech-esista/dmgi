@@ -31,8 +31,8 @@ export class UsersService {
             )
     }
 
-    alterUser(enquiryData: any) {
-        return this.http.post(`${environment.API_HOST}/user/add_or_update_user`, enquiryData)
+    alterUser(userData: any) {
+        return this.http.post(`${environment.API_HOST}/user/add_or_update_user`, userData)
             .pipe(
                 map((httpResponse: any) => {
                         return httpResponse.contents;

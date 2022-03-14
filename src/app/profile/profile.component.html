@@ -1,0 +1,48 @@
+<div class="main-wrapper main-wrapper-1">
+    <app-navigation></app-navigation>
+    <!--todo refactor for this  <router-outlet></router-outlet>-->
+    <div class="main-content">
+        <div class="section">
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header form-card-header">
+                                <h4>My Profile</h4>
+                            </div>
+                            <div class="card-body">
+                                <form name="userForm" (ngSubmit)="updateUser(form)" #form="ngForm">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Name</label>
+                                            <input type="text" ngModel name="name" autocomplete="off" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Email</label>
+                                            <input type="email" ngModel name="email" autocomplete="off" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Password</label>
+                                            <input type="password" ngModel name="password" maxlength="10" autocomplete="off" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="card-footer text-right">
+                                        <button class="btn btn-primary mr-2" [ngClass]="{'btn-progress': btnLoader}" type="submit">Submit</button>
+                                        <button class="btn btn-secondary mr-2" type="reset">Reset</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
