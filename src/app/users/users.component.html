@@ -1,0 +1,50 @@
+<div class="main-wrapper main-wrapper-1">
+    <app-navigation></app-navigation>
+    <!--todo refactor for this  <router-outlet></router-outlet>-->
+    <div class="main-content">
+        <app-loader *ngIf="loader"></app-loader>
+        <div class="section" *ngIf="!loader">
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Is Admin</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">&nbsp;</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let user of users">
+                                        <th scope="row"></th>
+                                        <td class="ng-binding">{{ user.name }}</td>
+                                        <td class="ng-binding">{{ user.email }}</td>
+                                        <td class="ng-binding">{{ user.is_admin ? "Yes" : "No" }}</td>
+                                        <td class="ng-binding">
+                                            <app-status-tag [status]="user.status_id"></app-status-tag>
+                                        </td>
+                                        <td class="action">
+                                            <div class="action-item" routerLink="/users/alter/{{user.id}}">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="add-btn" routerLink="new">
+            <span class="add-icon"></span>
+        </div>
+    </div>
+</div>

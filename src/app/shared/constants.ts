@@ -1,7 +1,7 @@
 let constants = {
     INTERESTED_IN: [
-        {id: 1, text: "PR"},
-        {id: 2, text: "Investments"}
+        {id: "INTERESTED_IN_PR", text: "PR"},
+        {id: "INTERESTED_IN_INVESTMENT", text: "Investments"}
     ],
     STATUSES: [
         {id: 1, text: "Published", className: 'badge-success'},
