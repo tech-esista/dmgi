@@ -19,7 +19,9 @@ export class ClientsComponent implements OnInit {
     ngOnInit(): void {
         this.clientsService.retrieveClients().subscribe((data: any) => {
             this.clients = data;
-            this.loader = false
+            this.loader = false;
+        }, (error) => {
+            this.loader = false;
         })
     }
 

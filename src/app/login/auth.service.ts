@@ -21,11 +21,10 @@ export class AuthService {
     getLogin(email: string, password: string) {
         return this.http.post(`${environment.API_HOST}/user/request_account_access`, {email: email, password: password})
             .pipe(
-                map((userRes: any) => {
-                    return userRes.contents
-                }),
                 tap(userInfo => {
-                    this.setUser(userInfo)
+                    if (userInfo) {
+                        this.setUser(userInfo)
+                    }
                 })
             )
     }

@@ -19,7 +19,7 @@ export class AdminRoleGuard implements CanActivate {
                 if (user && user.isAdmin) {
                     return true;
                 }
-                return this.router.createUrlTree(["/clients"])
+                return this.router.createUrlTree(["/enquiries"])
             })
         )
     }

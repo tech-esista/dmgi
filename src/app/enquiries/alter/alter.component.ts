@@ -19,8 +19,11 @@ export class EnquiriesAlterComponent implements OnInit {
     btnLoader: boolean = false;
     constants = constants;
 
-    constructor(private enquiriesService: EnquiriesService,
-                private router: Router, private route: ActivatedRoute) {
+    constructor(
+        private enquiriesService: EnquiriesService,
+        private router: Router,
+        private route: ActivatedRoute
+    ) {
     }
 
     ngOnInit(): void {
@@ -34,6 +37,8 @@ export class EnquiriesAlterComponent implements OnInit {
                     delete data.created_at;
                     delete data.updated_at;
                     this.enquiryForm.setValue(data)
+                }, (error) => {
+                    this.pageLoader = false
                 })
             }
         })
@@ -62,6 +67,8 @@ export class EnquiriesAlterComponent implements OnInit {
                     position: 'topRight'
                 });
             this.router.navigate(["/", "enquiries"])
+        }, (error) => {
+            this.btnLoader = false;
         })
     }
 
@@ -77,14 +84,16 @@ export class EnquiriesAlterComponent implements OnInit {
             showLoaderOnConfirm: true,
             buttons: true,
             preConfirm: () => {
-                this.enquiriesService.convertToClient(this.enquiryId).subscribe((data) => {
-                    iziToast.default.success({
-                        title: 'Success',
-                        message: `Successfully converted into client!`,
-                        position: 'topRight'
+                this.enquiriesService.convertToClient(this.enquiryId)
+                    .subscribe((data) => {
+                        iziToast.default.success({
+                            title: 'Success',
+                            message: `Successfully converted into client!`,
+                            position: 'topRight'
+                        })
+                        this.router.navigateByUrl("/clients");
+                    }, (error) => {
                     })
-                    this.router.navigateByUrl("/clients");
-                })
             },
             dangerMode: true,
         })

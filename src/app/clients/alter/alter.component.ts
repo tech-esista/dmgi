@@ -34,6 +34,8 @@ export class ClientsAlterComponent implements OnInit {
                     delete data.created_at;
                     delete data.updated_at;
                     this.clientForm.setValue(data)
+                }, (error) => {
+                    this.pageLoader = false;
                 })
             }
         })
@@ -59,6 +61,8 @@ export class ClientsAlterComponent implements OnInit {
                     position: 'topRight'
                 });
             this.router.navigate(["/", "clients"])
+        }, (error) => {
+            this.btnLoader = false;
         })
     }
 }

@@ -19,6 +19,8 @@ export class EnquiriesComponent implements OnInit {
         this.enquiriesService.retrieveEnquiries().subscribe((data: any) => {
             this.enquiries = data;
             this.loader = false
+        }, (error) => {
+            this.loader = false
         })
     }
 

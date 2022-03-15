@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {map} from "rxjs/operators"
 
 import {environment} from "../../environments/environment";
 
@@ -12,43 +11,18 @@ export class EnquiriesService {
     }
 
     retrieveEnquiries() {
-        return this.http
-            .post(`${environment.API_HOST}/enquiry/get_all_enquiries`, {})
-            .pipe(
-                map((httpResponse: any) => {
-                        return httpResponse.contents;
-                    }
-                )
-            )
+        return this.http.post(`${environment.API_HOST}/enquiry/get_all_enquiries`, {})
     }
 
     retrieveEnquiry(enquiryId: number) {
         return this.http.post(`${environment.API_HOST}/enquiry/get_enquiry_by_id`, {id: enquiryId})
-            .pipe(
-                map((httpResponse: any) => {
-                        return httpResponse.contents;
-                    }
-                )
-            )
     }
 
     addNewEnquiry(enquiryData: any) {
         return this.http.post(`${environment.API_HOST}/enquiry/add_or_update_enquiry`, enquiryData)
-            .pipe(
-                map((httpResponse: any) => {
-                        return httpResponse.contents;
-                    }
-                )
-            )
     }
 
     convertToClient(enquiryId: number) {
         return this.http.post(`${environment.API_HOST}/enquiry/convert_enquiry_to_client`, {id: enquiryId})
-            .pipe(
-                map((httpResponse: any) => {
-                        return httpResponse.contents;
-                    }
-                )
-            )
     }
 }
