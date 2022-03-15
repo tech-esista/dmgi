@@ -1,4 +1,5 @@
 export class User {
+    public id: number;
     public name: string;
     public email: string;
     public statusId: number;
@@ -6,13 +7,14 @@ export class User {
     public isAdmin: boolean;
 
     constructor(
+        id: number,
         name: string,
         email: string,
         status_id: number,
         apiKey: string,
         isAdmin: boolean,
     ) {
-
+        this.id = id;
         this.email = email;
         this.name = name;
         this.isAdmin = isAdmin;

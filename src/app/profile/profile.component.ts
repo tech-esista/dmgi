@@ -26,6 +26,7 @@ export class ProfileComponent implements OnInit {
         this.authService.user$.subscribe(user => {
             setTimeout(() => {
                 this.profileForm.setValue({
+                    id: user.id,
                     name: user.name,
                     email: user.email,
                     password: ""
@@ -46,7 +47,6 @@ export class ProfileComponent implements OnInit {
                     message: `Updated your profile`,
                     position: 'topRight'
                 });
-            this.router.navigate(["/", "clients"])
         })
     }
 

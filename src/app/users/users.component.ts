@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+
 import {UsersService} from "./users.service";
+import constants from "../shared/constants";
 
 @Component({
     selector: 'app-users',
@@ -10,6 +12,7 @@ export class UsersComponent implements OnInit {
 
     loader: boolean = true;
     users: any[] = [];
+    statusList = constants.USER_STATUS;
 
     constructor(private usersService: UsersService) {
     }

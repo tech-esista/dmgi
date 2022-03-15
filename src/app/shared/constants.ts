@@ -11,6 +11,10 @@ let constants = {
     GENDER: [
         {id: 1, text: "Male"},
         {id: 2, text: "Female"},
+    ],
+    USER_STATUS: [
+        {id: 1, text: "Active", className: 'badge-success'},
+        {id: 2, text: "Inactive", className: 'badge-light'},
     ]
 }
 export default constants;

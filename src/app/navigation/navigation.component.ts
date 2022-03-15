@@ -32,7 +32,7 @@ export class NavigationComponent implements OnInit {
         Swal.fire({
             title: 'Are you sure?',
             text: 'You will be logged out!',
-            icon: 'success',
+            icon: 'warning',
             confirmButtonText: "Sure",
             cancelButtonText: "Keep, Logged In!",
             showCancelButton: true,

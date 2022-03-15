@@ -47,6 +47,7 @@ export class AuthService {
 
     private setUser(userInfo: any) {
         const userToBeSaved: User = {
+            id: userInfo.id,
             name: userInfo.name,
             email: userInfo.email,
             statusId: userInfo.status_id,

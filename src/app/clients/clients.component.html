@@ -27,7 +27,7 @@
                                         <td class="ng-binding">{{ client.email }}</td>
                                         <td class="ng-binding">{{ client.mobile_no }}</td>
                                         <td class="ng-binding">
-                                            <app-status-tag [status]="client.status_id"></app-status-tag>
+                                            <app-status-tag [status]="client.status_id" [statusList]="statusList"></app-status-tag>
                                         </td>
                                         <td class="action">
                                             <div class="action-item" routerLink="/clients/alter/{{client.id}}">

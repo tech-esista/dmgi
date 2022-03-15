@@ -36,7 +36,8 @@ export class UserAlterComponent implements OnInit {
                         name: data.name,
                         email: data.email,
                         password: "",
-                        is_admin: data.is_admin
+                        is_admin: data.is_admin,
+                        status_id: data.status_id
                     }
                     this.userForm.setValue(formData)
                 })

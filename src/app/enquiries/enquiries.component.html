@@ -27,7 +27,7 @@
                                         <td class="ng-binding">{{ enquiry.email }}</td>
                                         <td class="ng-binding">{{ enquiry.mobile_no }}</td>
                                         <td class="ng-binding">
-                                            <app-status-tag [status]="enquiry.status_id"></app-status-tag>
+                                            <app-status-tag [status]="enquiry.status_id" [statusList]="statusList"></app-status-tag>
                                         </td>
                                         <td class="action">
                                             <div class="action-item" routerLink="/enquiries/alter/{{enquiry.id}}">

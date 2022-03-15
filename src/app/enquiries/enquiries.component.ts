@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EnquiriesService} from "./enquiries.service";
+import constants from "../shared/constants";
 
 @Component({
     selector: 'app-enquiries',
@@ -9,6 +10,7 @@ import {EnquiriesService} from "./enquiries.service";
 export class EnquiriesComponent implements OnInit {
     loader: boolean = true;
     enquiries: any[] = [];
+    statusList = constants.STATUSES;
 
     constructor(private enquiriesService: EnquiriesService) {
     }

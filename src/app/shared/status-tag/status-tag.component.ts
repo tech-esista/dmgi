@@ -8,7 +8,8 @@ import constants from "../constants";
 })
 export class StatusTagComponent implements OnInit {
 
-    @Input() status : number;
+    @Input() status: number;
+    @Input() statusList: any;
     className: string = "badge-light";
     statusText: string;
 
@@ -17,10 +18,10 @@ export class StatusTagComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        let index = constants.STATUSES.findIndex(status => status.id === this.status)
-        if(index != -1){
-            this.className = constants.STATUSES[index].className;
-            this.statusText = constants.STATUSES[index].text;
+        let index = this.statusList.findIndex((status: any) => status.id === this.status);
+        if (index != -1) {
+            this.className = this.statusList[index].className;
+            this.statusText = this.statusList[index].text;
         }
     }
 

@@ -27,7 +27,7 @@
                                         <td class="ng-binding">{{ user.email }}</td>
                                         <td class="ng-binding">{{ user.is_admin ? "Yes" : "No" }}</td>
                                         <td class="ng-binding">
-                                            <app-status-tag [status]="user.status_id"></app-status-tag>
+                                            <app-status-tag [status]="user.status_id" [statusList]="statusList"></app-status-tag>
                                         </td>
                                         <td class="action">
                                             <div class="action-item" routerLink="/users/alter/{{user.id}}">

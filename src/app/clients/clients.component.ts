@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+
 import {ClientsService} from "./clients.service";
+import constants from "../shared/constants";
 
 @Component({
     selector: 'app-clients',
@@ -9,6 +11,7 @@ import {ClientsService} from "./clients.service";
 export class ClientsComponent implements OnInit {
     loader: boolean = true;
     clients: any[] = [];
+    statusList = constants.STATUSES;
 
     constructor(private clientsService: ClientsService) {
     }
