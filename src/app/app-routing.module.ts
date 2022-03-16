@@ -34,6 +34,10 @@ const routes: Routes = [
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
         canActivate: [AuthGuard]
     },
+    {
+        path: "enquiry",
+        loadChildren: () => import('./enquiry/enquiry.module').then(m => m.EnquiryModule),
+    },
 ];
 
 @NgModule({
