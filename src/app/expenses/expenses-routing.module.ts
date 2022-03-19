@@ -1,20 +1,21 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {EnquiriesComponent} from "./enquiries.component";
-import {EnquiriesAlterComponent} from "./alter/alter.component";
+
+import {ExpensesComponent} from "./expenses.component";
+import {ExpenseAlterComponent} from "./alter/alter.component";
 
 const routes: Routes = [
     {
         path: "",
-        component: EnquiriesComponent
+        component: ExpensesComponent
     },
     {
         path: "new",
-        component: EnquiriesAlterComponent
+        component: ExpenseAlterComponent
     },
     {
         path: "alter/:id",
-        component: EnquiriesAlterComponent
+        component: ExpenseAlterComponent
     }
 ]
 
@@ -26,6 +27,6 @@ const routes: Routes = [
         RouterModule
     ]
 })
-export class EnquiriesRoutingModule {
+export class ExpensesRoutingModule {
 
 }

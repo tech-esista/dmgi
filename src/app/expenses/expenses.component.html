@@ -1,0 +1,46 @@
+<div class="main-wrapper main-wrapper-1">
+    <app-navigation></app-navigation>
+    <!--todo refactor for this  <router-outlet></router-outlet>-->
+    <div class="main-content">
+        <app-loader *ngIf="loader"></app-loader>
+        <div class="section" *ngIf="!loader">
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Note</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">&nbsp;</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let expense of expenses">
+                                        <th scope="row"></th>
+                                        <td class="ng-binding">{{ expense.amount }}</td>
+                                        <td class="ng-binding">{{ expense.note }}</td>
+                                        <td class="ng-binding">{{ expense.created_at | date: 'dd MMMM' }}</td>
+                                        <td class="action">
+                                            <div class="action-item" routerLink="/expenses/alter/{{expense.id}}">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="add-btn" routerLink="new">
+            <span class="add-icon"></span>
+        </div>
+    </div>
+</div>
