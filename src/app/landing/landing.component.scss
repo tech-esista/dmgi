@@ -1,0 +1,14 @@
+.navbar {
+    height: fit-content;
+
+}
+.navbar-toggler {
+    .navbar-toggler-awesome {
+        font-size: 25px;
+    }
+}
+.nav-item {
+    &:hover {
+        cursor: pointer;
+    }
+}

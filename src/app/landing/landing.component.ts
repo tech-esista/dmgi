@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {PageScrollService} from 'ngx-page-scroll-core';
+import {DOCUMENT} from "@angular/common";
+
 declare var $: any;
 
 @Component({
@@ -10,46 +13,38 @@ declare var $: any;
         '../../assets/landing/css/fontawesome-all.css',
         '../../assets/landing/css/magnific-popup.css',
         '../../assets/landing/css/styles.css',
+        '../shared/shared.stylesheet.scss'
     ]
 })
 
 export class LandingComponent implements OnInit {
+    atTheTop: boolean = false;
 
-    constructor() { }
+    constructor(private pageScroll: PageScrollService, @Inject(DOCUMENT) private document: any) {
+    }
 
     ngOnInit(): void {
-        $(window).on("load", function () {
-            var preloaderFadeOutTime = 500;
-            function hidePreloader() {
-                var preloader = $(".spinner-wrapper");
-                setTimeout(function () {
-                    preloader.fadeOut(preloaderFadeOutTime);
-                }, 500);
-            }
-            hidePreloader();
-        });
-
-        $(window).on("scroll load", function () {
+        const amountScrolled = 700;
+        $(window).on("scroll load", () => {
             if ($(".navbar").offset().top > 60) {
                 $(".fixed-top").addClass("top-nav-collapse");
             } else {
                 $(".fixed-top").removeClass("top-nav-collapse");
             }
-        });
 
-        /* Back To Top Button */
-        // create the back to top button
-        $("body").prepend(
-            '<a href="#" class="back-to-top page-scroll">Back to Top</a>'
-        );
-        var amountScrolled = 700;
-        $(window).scroll(function () {
             if ($(window).scrollTop() > amountScrolled) {
-                $("a.back-to-top").fadeIn("500");
+                this.atTheTop = true;
             } else {
-                $("a.back-to-top").fadeOut("500");
+                this.atTheTop = false;
             }
         });
     }
 
+    scrollToTop(element : string) {
+        this.pageScroll.scroll({
+            document: this.document,
+            scrollTarget: element,
+            scrollOffset: 40
+        })
+    }
 }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" id="navbar">
     <a class="navbar-brand logo-image" href="index.html"><img src="../../assets/landing/images/logo.png" alt="alternative"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-awesome fas fa-bars"></span>
@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#header">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link page-scroll" (click)="scrollToTop('#header')">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#services">Services</a>
+                <a class="nav-link page-scroll" (click)="scrollToTop('#services')">Services</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#about">About</a>
+                <a class="nav-link page-scroll"  (click)="scrollToTop('#about')">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#contact">Contact</a>
+                <a class="nav-link page-scroll"  (click)="scrollToTop('#contact')">Contact</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link page-scroll" routerLink="login">Login</a>
@@ -299,4 +299,7 @@
             </div>
         </div>
     </div>
+</div>
+<div class="fab-btn up-arrow" (click)="scrollToTop('#header')" *ngIf="atTheTop">
+    <i class="fas fa-angle-up arrow-icon"></i>
 </div>
