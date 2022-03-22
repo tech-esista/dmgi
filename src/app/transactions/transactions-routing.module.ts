@@ -1,21 +1,21 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 
-import {ExpensesComponent} from "./expenses.component";
-import {ExpenseAlterComponent} from "./alter/alter.component";
+import {TransactionsComponent} from "./transactions.component";
+import {TransactionAlterComponent} from "./alter/alter.component";
 
 const routes: Routes = [
     {
         path: "",
-        component: ExpensesComponent
+        component: TransactionsComponent
     },
     {
         path: "new",
-        component: ExpenseAlterComponent
+        component: TransactionAlterComponent
     },
     {
         path: "alter/:id",
-        component: ExpenseAlterComponent
+        component: TransactionAlterComponent
     }
 ]
 
@@ -27,6 +27,6 @@ const routes: Routes = [
         RouterModule
     ]
 })
-export class ExpensesRoutingModule {
+export class TransactionsRoutingModule {
 
 }

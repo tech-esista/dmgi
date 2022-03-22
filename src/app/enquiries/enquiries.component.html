@@ -23,10 +23,10 @@
                                     <tbody>
                                     <tr *ngFor="let enquiry of enquiries">
                                         <th scope="row"></th>
-                                        <td class="ng-binding">{{ enquiry.name }}</td>
-                                        <td class="ng-binding">{{ enquiry.email }}</td>
-                                        <td class="ng-binding">{{ enquiry.mobile_no }}</td>
-                                        <td class="ng-binding">
+                                        <td>{{ enquiry.name }}</td>
+                                        <td>{{ enquiry.email }}</td>
+                                        <td>{{ enquiry.mobile_no }}</td>
+                                        <td>
                                             <app-status-tag [status]="enquiry.status_id" [statusList]="statusList"></app-status-tag>
                                         </td>
                                         <td class="action">

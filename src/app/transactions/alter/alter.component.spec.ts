@@ -1,20 +1,20 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ExpenseAlterComponent} from './alter.component';
+import {TransactionAlterComponent} from './alter.component';
 
-describe('ExpenseAlterComponent', () => {
-    let component: ExpenseAlterComponent;
-    let fixture: ComponentFixture<ExpenseAlterComponent>;
+describe('TransactionAlterComponent', () => {
+    let component: TransactionAlterComponent;
+    let fixture: ComponentFixture<TransactionAlterComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [ExpenseAlterComponent]
+            declarations: [TransactionAlterComponent]
         })
             .compileComponents();
     });
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ExpenseAlterComponent);
+        fixture = TestBed.createComponent(TransactionAlterComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

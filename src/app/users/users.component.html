@@ -23,10 +23,10 @@
                                     <tbody>
                                     <tr *ngFor="let user of users">
                                         <th scope="row"></th>
-                                        <td class="ng-binding">{{ user.name }}</td>
-                                        <td class="ng-binding">{{ user.email }}</td>
-                                        <td class="ng-binding">{{ user.is_admin ? "Yes" : "No" }}</td>
-                                        <td class="ng-binding">
+                                        <td>{{ user.name }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.is_admin ? "Yes" : "No" }}</td>
+                                        <td>
                                             <app-status-tag [status]="user.status_id" [statusList]="statusList"></app-status-tag>
                                         </td>
                                         <td class="action">

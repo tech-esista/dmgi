@@ -3,24 +3,26 @@ import {NgForm} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 
 import * as iziToast from "izitoast";
-import {ExpensesService} from "../expenses.service";
+import {TransactionsService} from "../transactions.service";
 import {AuthService} from "../../login/auth.service";
+import constants from "../../shared/constants";
 
 @Component({
     selector: 'app-alter',
     templateUrl: './alter.component.html',
     styleUrls: ['./alter.component.scss', '../../shared/shared.stylesheet.scss']
 })
-export class ExpenseAlterComponent implements OnInit {
+export class TransactionAlterComponent implements OnInit {
 
-    @ViewChild('form') expenseForm: NgForm;
-    expenseId: number;
+    @ViewChild('form') transactionForm: NgForm;
+    transactionId: number;
     userId: number;
     pageLoader: boolean = false;
     btnLoader: boolean = false;
+    constants: any = constants;
 
     constructor(
-        private expenseService: ExpensesService,
+        private transactionsService: TransactionsService,
         private authService: AuthService,
         private router: Router,
         private route: ActivatedRoute
@@ -34,14 +36,14 @@ export class ExpenseAlterComponent implements OnInit {
         this.route.params.subscribe((params: any) => {
             if (params.hasOwnProperty("id")) {
                 this.pageLoader = true;
-                this.expenseService.retrieveExpense(params.id).subscribe((data: any) => {
+                this.transactionsService.retrieveTransaction(params.id).subscribe((data: any) => {
                     this.pageLoader = false;
-                    this.expenseId = data.id;
+                    this.transactionId = data.id;
                     delete data.id;
                     delete data.user_id;
                     delete data.created_at;
                     delete data.updated_at;
-                    this.expenseForm.setValue(data)
+                    this.transactionForm.setValue(data)
                 }, (error) => {
                     this.pageLoader = false
                 })
@@ -49,54 +51,57 @@ export class ExpenseAlterComponent implements OnInit {
         })
     }
 
-    alterExpense(form: NgForm) {
-        if (this.expenseId) {
-            this.updateExpense(form);
+    alterTransaction(form: NgForm) {
+        if (this.transactionId) {
+            this.updateTransaction(form);
         } else {
-            this.saveNewExpense(form);
+            this.saveNewTransaction(form);
         }
     }
 
-    saveNewExpense(form: NgForm) {
+    saveNewTransaction(form: NgForm) {
         if (form.form.status === 'INVALID') {
             return
         }
 
         this.btnLoader = true;
-
-        this.expenseService.addNewExpense(form.value).subscribe(data => {
+        let params = {
+            ...form.value,
+            user_id: this.userId
+        };
+        this.transactionsService.addNewTransaction(params).subscribe(data => {
             this.btnLoader = false;
             iziToast.default
                 .success({
                     title: 'Success',
-                    message: `Added new expense entry!`,
+                    message: `Added new transaction entry!`,
                     position: 'topRight'
                 });
-            this.router.navigate(["/", "expenses"])
+            this.router.navigate(["/", "transactions"])
         }, (error) => {
             this.btnLoader = false;
         })
     }
 
-    updateExpense(form: NgForm) {
+    updateTransaction(form: NgForm) {
         if (form.form.status === 'INVALID') {
             return
         }
         this.btnLoader = true;
         let params = {
-            expense_id: this.expenseId,
+            transaction_id: this.transactionId,
             ...form.value,
             user_id: this.userId
         };
-        this.expenseService.editExpense(params).subscribe(data => {
+        this.transactionsService.editTransaction(params).subscribe(data => {
             this.btnLoader = false;
             iziToast.default
                 .success({
                     title: 'Success',
-                    message: `Updated expense entry`,
+                    message: `Updated transaction entry`,
                     position: 'topRight'
                 });
-            this.router.navigate(["/", "expenses"])
+            this.router.navigate(["/", "transactions"])
         }, (error) => {
             this.btnLoader = false;
         })

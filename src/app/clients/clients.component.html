@@ -23,10 +23,10 @@
                                     <tbody>
                                     <tr *ngFor="let client of clients">
                                         <th scope="row"></th>
-                                        <td class="ng-binding">{{ client.name }}</td>
-                                        <td class="ng-binding">{{ client.email }}</td>
-                                        <td class="ng-binding">{{ client.mobile_no }}</td>
-                                        <td class="ng-binding">
+                                        <td>{{ client.name }}</td>
+                                        <td>{{ client.email }}</td>
+                                        <td>{{ client.mobile_no }}</td>
+                                        <td>
                                             <app-status-tag [status]="client.status_id" [statusList]="statusList"></app-status-tag>
                                         </td>
                                         <td class="action">

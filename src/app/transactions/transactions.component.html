@@ -16,17 +16,21 @@
                                         <th scope="col">Amount</th>
                                         <th scope="col">Note</th>
                                         <th scope="col">Date</th>
+                                        <th scope="col">Type</th>
                                         <th scope="col">&nbsp;</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr *ngFor="let expense of expenses">
+                                    <tr *ngFor="let transaction of transactions">
                                         <th scope="row"></th>
-                                        <td class="ng-binding">{{ expense.amount }}</td>
-                                        <td class="ng-binding">{{ expense.note }}</td>
-                                        <td class="ng-binding">{{ expense.created_at | date: 'dd MMMM, YYYY' }}</td>
+                                        <td>{{ transaction.amount }}</td>
+                                        <td>{{ transaction.note }}</td>
+                                        <td>{{ transaction.created_at | date: 'dd MMMM, YYYY' }}</td>
+                                        <td>
+                                            <app-status-tag [status]="transaction.transaction_type" [statusList]="statusList"></app-status-tag>
+                                        </td>
                                         <td class="action">
-                                            <div class="action-item" routerLink="/expenses/alter/{{expense.id}}">
+                                            <div class="action-item" routerLink="/transactions/alter/{{transaction.id}}">
                                                 <i class="fas fa-pen"></i>
                                             </div>
                                         </td>
