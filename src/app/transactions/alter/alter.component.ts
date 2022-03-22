@@ -89,7 +89,7 @@ export class TransactionAlterComponent implements OnInit {
         }
         this.btnLoader = true;
         let params = {
-            transaction_id: this.transactionId,
+            id: this.transactionId,
             ...form.value,
             user_id: this.userId
         };

@@ -15,7 +15,7 @@ export class TransactionsService {
     }
 
     retrieveTransaction(transactionId: number) {
-        return this.http.post(`${environment.API_HOST}/user/get_transaction_by_id`, {transaction_id: transactionId})
+        return this.http.post(`${environment.API_HOST}/user/get_transaction_by_id`, {id: transactionId})
     }
 
     addNewTransaction(transactionData: any) {
