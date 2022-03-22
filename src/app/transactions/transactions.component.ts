@@ -11,13 +11,15 @@ export class TransactionsComponent implements OnInit {
     loader: boolean = true;
     transactions: any[] = [];
     statusList = constants.TRANSACTION_TYPES;
+    currentBalance: number;
 
     constructor(private transactionsService: TransactionsService) {
     }
 
     ngOnInit(): void {
         this.transactionsService.retrieveTransactions().subscribe((data: any) => {
-            this.transactions = data;
+            this.transactions = data.transactions;
+            this.currentBalance = data.current_balance;
             this.loader = false
         }, (error) => {
             this.loader = false
