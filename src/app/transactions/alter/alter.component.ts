@@ -39,11 +39,12 @@ export class TransactionAlterComponent implements OnInit {
                 this.transactionsService.retrieveTransaction(params.id).subscribe((data: any) => {
                     this.pageLoader = false;
                     this.transactionId = data.id;
-                    delete data.id;
-                    delete data.user_id;
-                    delete data.created_at;
-                    delete data.updated_at;
-                    this.transactionForm.setValue(data)
+                    const formData = {
+                        amount: data.amount,
+                        note:data.note,
+                        transaction_type: data.transaction_type
+                    }
+                    this.transactionForm.setValue(formData)
                 }, (error) => {
                     this.pageLoader = false
                 })
