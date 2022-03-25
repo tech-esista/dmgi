@@ -1,0 +1,48 @@
+<div class="main-wrapper main-wrapper-1">
+    <app-navigation></app-navigation>
+    <!--todo refactor for this  <router-outlet></router-outlet>-->
+    <div class="main-content">
+        <app-loader *ngIf="loader"></app-loader>
+        <div class="section" *ngIf="!loader">
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Note</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">&nbsp;</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let sanction of sanctions">
+                                        <th scope="row"></th>
+                                        <td>{{ sanction.note }}</td>
+                                        <td>{{ sanction.amount }}</td>
+                                        <td>
+                                            <app-status-tag [status]="sanction.status_id" [statusList]="statusList"></app-status-tag>
+                                        </td>
+                                        <td class="action">
+                                            <div class="action-item" routerLink="/sanctions/alter/{{sanction.id}}">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fab-btn add-btn" routerLink="new">
+            <span class="add-icon"></span>
+        </div>
+    </div>
+</div>

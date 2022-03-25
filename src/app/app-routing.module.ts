@@ -42,6 +42,10 @@ const routes: Routes = [
         path: "transactions",
         loadChildren: () => import('./transactions/transactions.module').then(m => m.TransactionsModule),
     },
+    {
+        path: "sanctions",
+        loadChildren: () => import('./sanctions/sanctions.module').then(m => m.SanctionsModule),
+    },
 ];
 
 @NgModule({

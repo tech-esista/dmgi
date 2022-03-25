@@ -1,0 +1,52 @@
+<div class="main-wrapper main-wrapper-1">
+    <app-navigation></app-navigation>
+    <div class="main-content">
+        <app-loader *ngIf="pageLoader"></app-loader>
+        <section class="section" *ngIf="!pageLoader">
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header form-card-header">
+                                <i class="fas fa-angle-left" routerLink="/sanctions"></i>
+                                <h4>Sanction Info</h4>
+                            </div>
+                            <div class="card-body">
+                                <form name="enquiryForm" (ngSubmit)="alterSanction(form)" #form="ngForm">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Amount</label>
+                                            <input type="number" ngModel name="amount" autocomplete="off" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Note</label>
+                                            <textarea name="note" ngModel autocomplete="off" class="form-control" required></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6" *ngIf="(user.isAdmin && sanctionId)">
+                                            <label>Sanctions Status</label>
+                                            <select class="form-control" ngModel name="status_id" required>
+                                                <option value="">Select</option>
+                                                <option [ngValue]="status.id" *ngFor="let status of constants.SANCTIONS_STATUS">{{ status.text }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Expected Date for Funds</label>
+                                            <input type="date" ngModel name="expected_date_for_funds" autocomplete="off" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer text-right">
+                                        <button class="btn btn-primary mr-2" [ngClass]="{'btn-progress': btnLoader}" type="submit">Submit</button>
+                                        <button class="btn btn-secondary mr-2" type="reset">Reset</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

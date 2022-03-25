@@ -19,6 +19,10 @@ let constants = {
     TRANSACTION_TYPES: [
         {id: 1, text: "Credited", className: 'badge-success'},
         {id: 2, text: "Debited", className: 'badge-danger'},
+    ],
+    SANCTIONS_STATUS: [
+        {id: 1, text: "Pending", className: 'badge-light'},
+        {id: 2, text: "Approved", className: 'badge-success'},
     ]
 }
 export default constants;
